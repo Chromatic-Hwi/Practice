@@ -1,0 +1,21 @@
+{
+    "os": "Windows-10-10.0.19044-SP0",
+    "python": "3.9.7",
+    "heartbeatAt": "2022-04-17T03:30:17.439410",
+    "startedAt": "2022-04-17T03:30:07.458752",
+    "docker": null,
+    "gpu": "NVIDIA GeForce GTX 1660 SUPER",
+    "gpu_count": 1,
+    "cpu_count": 12,
+    "cuda": null,
+    "args": [
+        "-f",
+        "C:\\Users\\82108\\AppData\\Roaming\\jupyter\\runtime\\kernel-8aa67dfb-7784-438f-8cec-5b882e750d95.json"
+    ],
+    "state": "running",
+    "program": "Documents/GitHub/Practice/Kubernetes/Untitled.ipynb",
+    "root": "C:\\Users\\82108",
+    "host": "DESKTOP-AUDBVNJ",
+    "username": "82108",
+    "executable": "C:\\Users\\82108\\anaconda3\\python.exe"
+}
