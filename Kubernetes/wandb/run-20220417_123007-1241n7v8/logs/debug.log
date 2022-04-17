@@ -28,3 +28,68 @@ config: {'layer_1_activation': 'relu', 'layer_1': 128, 'learning_rate': 0.01, 'd
 2022-04-17 12:30:14,676 INFO    MainThread:2012 [wandb_init.py:init():685] run started, returning control to user process
 2022-04-17 12:30:54,564 INFO    MainThread:2012 [wandb_init.py:_pause_backend():351] pausing backend
 2022-04-17 12:30:54,564 INFO    MainThread:2012 [jupyter.py:save_ipynb():377] not saving jupyter notebook
+2022-04-17 15:54:49,373 INFO    MainThread:2012 [wandb_run.py:_atexit_cleanup():1865] got exitcode: 0
+2022-04-17 15:54:49,418 INFO    MainThread:2012 [wandb_run.py:_restore():1837] restore
+2022-04-17 15:54:50,270 INFO    MainThread:2012 [wandb_run.py:_on_finish():1995] got exit ret: file_counts {
+  wandb_count: 1
+  media_count: 1
+}
+pusher_stats {
+  uploaded_bytes: 1419
+  total_bytes: 1419
+}
+
+2022-04-17 15:54:50,607 INFO    MainThread:2012 [wandb_run.py:_on_finish():1995] got exit ret: file_counts {
+  wandb_count: 1
+  media_count: 1
+}
+pusher_stats {
+  uploaded_bytes: 1419
+  total_bytes: 1419
+}
+
+2022-04-17 15:54:51,484 INFO    MainThread:2012 [wandb_run.py:_on_finish():1995] got exit ret: file_counts {
+  wandb_count: 6
+  media_count: 1
+}
+pusher_stats {
+  uploaded_bytes: 1419
+  total_bytes: 23916
+}
+
+2022-04-17 15:54:51,599 INFO    MainThread:2012 [wandb_run.py:_on_finish():1995] got exit ret: file_counts {
+  wandb_count: 6
+  media_count: 1
+}
+pusher_stats {
+  uploaded_bytes: 1419
+  total_bytes: 23916
+}
+
+2022-04-17 15:54:51,705 INFO    MainThread:2012 [wandb_run.py:_on_finish():1995] got exit ret: file_counts {
+  wandb_count: 6
+  media_count: 1
+}
+pusher_stats {
+  uploaded_bytes: 1419
+  total_bytes: 23916
+}
+
+2022-04-17 15:54:51,811 INFO    MainThread:2012 [wandb_run.py:_on_finish():1995] got exit ret: file_counts {
+  wandb_count: 6
+  media_count: 1
+}
+pusher_stats {
+  uploaded_bytes: 1419
+  total_bytes: 23916
+}
+
+2022-04-17 15:54:51,916 INFO    MainThread:2012 [wandb_run.py:_on_finish():1995] got exit ret: file_counts {
+  wandb_count: 6
+  media_count: 1
+}
+pusher_stats {
+  uploaded_bytes: 23916
+  total_bytes: 23916
+}
+
