@@ -9,5 +9,6 @@ for n in range(N):
 
 print()
 
-for p in reversed(heap0):
-    print(p, end=" ")
+
+for p in reversed(range(len(heap0))):
+    print(heap0[p], end=" ")
