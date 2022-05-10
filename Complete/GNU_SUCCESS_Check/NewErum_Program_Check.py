@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
 
-f = open('./info.txt', 'r')
+f = open('./Login_info.txt', 'r')
 lines = f.readlines()
 info=[]
 for line in lines:
@@ -12,7 +12,7 @@ for line in lines:
 f.close()
 
 ID=info[1]
-PW=info[3]
+PW=info[5]
 
 path = "./chromedriver.exe"
 driver = webdriver.Chrome(path)
