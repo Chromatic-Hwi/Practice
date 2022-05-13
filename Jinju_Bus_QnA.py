@@ -15,6 +15,12 @@ f.close()
 ID=info[1]
 PW=info[3]
 
+HEAD = info[5]
+
+for i in range(1,6):
+    globals()['BODY_{}'.format(i)]=info[i+6]
+    
+#=====================================================================================================
 path = "./chromedriver.exe"
 driver = webdriver.Chrome(path)
 driver.implicitly_wait(1)
@@ -33,8 +39,16 @@ driver.find_element(By.XPATH,'//*[@id="wrap"]/header/div/div/div[2]/ul/li[4]/a')
 driver.find_element(By.XPATH,'//*[@id="contents"]/div/div/div[3]/div[1]/a[1]').click()
 
 # 글 제목
-driver.find_element(By.XPATH,'//*[@id="contents"]/div/div/form/div[1]/input').send_keys("제목")
+driver.find_element(By.XPATH,'//*[@id="contents"]/div/div/form/div[1]/input').send_keys(HEAD)
 time.sleep(0.5)
-driver.find_element(By.XPATH,'//*[@id="contents"]/div/div/form/div[1]/input').send_keys(Keys.TAB)
-
-# 글 본문
+driver.find_element(By.XPATH,'//*[@id="contents"]/div/div/form/div[1]/input').send_keys(
+    Keys.TAB,
+    BODY_1, Keys.ENTER, Keys.ENTER,
+    Keys.SPACE, Keys.SPACE, BODY_2, Keys.ENTER, Keys.ENTER,
+    Keys.SPACE, Keys.SPACE, BODY_3, Keys.ENTER, Keys.ENTER,
+    Keys.SPACE, Keys.SPACE, BODY_4, Keys.ENTER, Keys.ENTER,
+    Keys.SPACE, Keys.SPACE, BODY_5)
+time.sleep(0.5)
+driver.find_element(By.XPATH,'//*[@id="contents"]/div/div/form/div[3]/div[3]/button[3]').click()
+time.sleep(1)
+driver.quit()
