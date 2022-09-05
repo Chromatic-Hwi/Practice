@@ -91,7 +91,7 @@ while True:
             smt.starttls()
             smt.login(meID, mePW)
             
-            TOTAL_MSG="<<태풍 알림>> - {0}\n*현재풍속 = {1} mph\n\n*{2}로 구분된 {3}입니다.\n(구분 기준 : 보퍼트 풍력 계급)\n\n※이 메일은 Hwi의 컴퓨터에서 자동으로 발송되었습니다.".format(TIME_INFO, MPH, STEP, MSG)
+            TOTAL_MSG="<<태풍 알림>> - {0}\n*진주 풍속 = {1} mph\n\n*{2}로 구분된 {3}입니다.\n(구분 기준 : 보퍼트 풍력 계급)\n\n※이 메일은 Hwi의 컴퓨터에서 자동으로 발송되었습니다.".format(TIME_INFO, MPH, STEP, MSG)
             MAIL=MIMEText(TOTAL_MSG)
             MAIL['Subject']="Hwi가 보낸 태풍 알림입니다."
 
