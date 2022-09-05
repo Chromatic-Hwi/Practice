@@ -55,6 +55,11 @@ driver.implicitly_wait(5)
 
 driver.get('https://earth.nullschool.net/#current/wind/surface/level/orthographic=-232.22,35.08,5038/loc=128.094,35.180')
 driver.maximize_window()
+driver.find_element(By.XPATH,'//*[@id="spotlight-panel"]/div[2]/button').click()
+time.sleep(0.1)
+driver.find_element(By.XPATH,'//*[@id="spotlight-panel"]/div[2]/button').click()
+time.sleep(0.1)
+driver.find_element(By.XPATH,'//*[@id="spotlight-panel"]/div[2]/button').click()
 
 while True:
     NOW=DT.now()
@@ -74,6 +79,12 @@ while True:
     if MINUTE=="00" or MINUTE=="30":
         if SEC=="00":
             driver.get('https://earth.nullschool.net/#current/wind/surface/level/orthographic=-232.22,35.08,5038/loc=128.094,35.180')
+            driver.find_element(By.XPATH,'//*[@id="spotlight-panel"]/div[2]/button').click()
+            time.sleep(0.1)
+            driver.find_element(By.XPATH,'//*[@id="spotlight-panel"]/div[2]/button').click()
+            time.sleep(0.1)
+            driver.find_element(By.XPATH,'//*[@id="spotlight-panel"]/div[2]/button').click()
+            
             time.sleep(1) 
             
             smt=smtplib.SMTP('smtp.gmail.com', 587)
