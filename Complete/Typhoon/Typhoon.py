@@ -87,9 +87,9 @@ while True:
             
             time.sleep(1) 
             
-            smt=smtplib.SMTP('smtp.gmail.com', 587)
-            smt.starttls()
-            smt.login(meID, mePW)
+            smtp=smtplib.SMTP('smtp.gmail.com', 587)
+            smtp.starttls()
+            smtp.login(meID, mePW)
             
             TOTAL_MSG="<<태풍 알림>> - {0}\n*진주 풍속 = {1} mph\n\n*{2}로 구분된 {3}입니다.\n(구분 기준 : 보퍼트 풍력 계급)\n\n※이 메일은 Hwi의 컴퓨터에서 자동으로 발송되었습니다.".format(TIME_INFO, MPH, STEP, MSG)
             MAIL=MIMEText(TOTAL_MSG)
@@ -97,8 +97,8 @@ while True:
 
             for num in range(4, len(info)):
                 print(num)
-                smt.sendmail("meID", info[num], MAIL.as_string())
-                smt.quit()
+                smtp.sendmail("meID", info[num], MAIL.as_string())
+                smtp.quit()
             
     time.sleep(1)
     
