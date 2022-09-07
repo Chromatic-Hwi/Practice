@@ -9,7 +9,9 @@ import re
 #============================================================================================
 from datetime import datetime as DT
 import smtplib
+from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
 #============================================================================================
 f = open('./Mail_info.txt', 'r')
 lines = f.readlines()
@@ -64,46 +66,56 @@ driver.maximize_window()
 while True:
     NOW=DT.now()
     TIME_INFO=NOW.strftime('%Y-%m-%d %H:%M:%S')
+    DATE=TIME_INFO[:11]
     MIN=TIME_INFO[14:16]
     SEC=TIME_INFO[17:19]
-
+    
     INFO_ORIGIN=str(driver.find_element(By.XPATH,'//*[@id="spotlight-panel"]/div[2]/div').text)
-
+    
     num=0
     for w in INFO_ORIGIN:
         if w=="@":
             num=INFO_ORIGIN.index("@")
             break
         
-    SPD=int(re.sub(r'[^0-9]', '', INFO_ORIGIN[num+2:]))
-    print(SPD, type(SPD))
-    """
+    time.sleep(0.5)
+    SPD=int(re.sub(r'[^0-9]', '', INFO_ORIGIN[num+1:]))
+    time.sleep(0.5)
+    
     INFO=WIND_FORCE(SPD)
     STEP=INFO[0]
     MSG=INFO[1]
-
-    if MIN=="00" or MIN=="30" or MIN=="42":
+    
+    if MIN=="00" or MIN=="30" or MIN=="57":
         if SEC=="00":
-            driver.get('https://earth.nullschool.net/#current/wind/surface/level/orthographic=-232.22,35.08,5038/loc=128.094,35.180')
-            time.sleep(1)
-
-            driver.save_screenshot("./Typhoon_Screenshot_"+TIME_INFO+".jpg")
-
-            
             smtp=smtplib.SMTP('smtp.gmail.com', 587)
             smtp.starttls()
             smtp.login(meID, mePW)
-            
-            TOTAL_MSG="<<태풍 알림>> - {0}\n*진주 풍속 = {1} mph\n\n*{2}로 구분된 {3}입니다.\n(구분 기준 : 보퍼트 풍력 계급)\n\n※이 메일은 Hwi의 컴퓨터에서 자동으로 발송되었습니다.".format(TIME_INFO, MPH, STEP, MSG)
-            MAIL=MIMEText(TOTAL_MSG)
+
+            MAIL=MIMEMultipart()
             MAIL['Subject']="Hwi가 보낸 태풍 알림입니다."
 
-            for num in range(4, len(info)):
-                print(num)
-                smtp.sendmail("meID", info[num], MAIL.as_string())
-                smtp.quit()
-            """
-    time.sleep(1)
-    
-#driver.quit()
+            TOTAL_MSG="<<태풍 알림>> - {0}\n*진주 풍속 = {1} km/h\n\n*{2}로 구분된 {3}입니다.\n(구분 기준 : 보퍼트 풍력 계급)\n\n※이 메일은 Hwi의 컴퓨터에서 자동으로 발송되었습니다.".format(TIME_INFO, SPD, STEP, MSG)
+            #MAIL=MIMEText(TOTAL_MSG)
+            MSG_PART=MIMEText(TOTAL_MSG, "plain")
+            MAIL.attach(MSG_PART)
+            
+            driver.get('https://earth.nullschool.net/#current/wind/surface/level/orthographic=-232.22,35.08,5038/loc=128.094,35.180')
+            time.sleep(1)
 
+            driver.save_screenshot("./Typhoon_Screenshot_"+str(DATE)+".png")
+            time.sleep(3)
+            IMG="./Typhoon_Screenshot_"+str(DATE)+".png"
+
+            with open(IMG, 'rb') as CAP:
+                img = MIMEImage(CAP.read())
+                img.add_header('Content-Disposition','attachment', filename=IMG)
+                MAIL.attach(img)
+
+            for num in range(4, len(info)):
+                print(num-3,"명째")
+                smtp.sendmail("meID", info[num], MAIL.as_string())
+
+
+            smtp.quit()
+            print("전송 완료")
