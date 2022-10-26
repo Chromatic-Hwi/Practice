@@ -1,0 +1,2 @@
+C:\Users\82108\Documents\GitHub\Practice\Coding_Test\C#\제곱수\제곱수\obj\Debug\제곱수.csproj.AssemblyReference.cache
+C:\Users\82108\Documents\GitHub\Practice\Coding_Test\C#\제곱수\제곱수\obj\Debug\제곱수.csproj.CoreCompileInputs.cache
