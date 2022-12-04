@@ -4,12 +4,14 @@
 </head>
 
 <body>
-	<label>Set Temperature : &nbsp; <input type="text" size="5" maxlength="5"><label><br>
-	<br>
-	<label>Set Humidity : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" size="5" maxlength="5"><label><br>
-	<br>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Set"><br>
-	<br>
+	<form action="\post" method="post">
+		<label>Set Temperature : &nbsp; <input type="text" name="tempData" size="5" maxlength="5"><label><br>
+		<br>
+		<label>Set Humidity : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="humiData" size="5" maxlength="5"><label><br>
+		<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Set"><br>
+		<br>
+	</form>
 
 	<tr>
 		<table border="1">
