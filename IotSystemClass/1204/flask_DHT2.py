@@ -26,7 +26,7 @@ def view():
     with open("data/InputData.txt","a", encoding='utf-8') as f:
             f.write("%s,%s" % (tempData, humiData))
             
-    return render_template('flask_dht2.html', tempData=tempData, humiData=humiData)
+#return render_ttempData=tempData, humiData=humiData)
 
 
 
