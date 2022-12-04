@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import time
 import serial
 import pymysql
 
@@ -19,7 +20,7 @@ try:
             data = ser.readline().decode('utf-8').rstrip()
             data_s = data.split(',')
             
-            if len(data_s) <5:
+            if len(data_s) < 5:
                 continue
             if data_s[0] == 'T':
                 tem = data_s[1]

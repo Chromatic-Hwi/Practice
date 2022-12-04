@@ -32,4 +32,6 @@ void loop()
     Serial.print(h);
     Serial.println(",");
     }
+    delay(200);
+    
 }
