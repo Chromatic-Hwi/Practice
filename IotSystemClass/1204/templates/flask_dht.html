@@ -1,0 +1,30 @@
+<html>
+<head>
+	<title>My TEST PAGE</title>
+</head>
+
+<body>
+	<tr>
+		<table border="1">
+			<thead>
+				<tr>
+					<td>Date</td>
+					<td>Temperature</td>
+					<td>Humidity</td>
+				</tr>
+			</thead>
+
+			<tbody>
+				{%for i in  rows%}
+				<tr>
+					<td>{{i[1]}}</td>
+					<td>{{i[2]}}</td>
+					<td>{{i[3]}}</td>
+				</tr>
+				{%endfor%}
+			</tbody>
+		</table>
+	</tr>
+</body>
+</html>
+	
