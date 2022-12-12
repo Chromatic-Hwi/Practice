@@ -25,11 +25,12 @@ def LogSave(Check, ErrorMsg):
     path='./'
     LogCheck = os.listdir(path)
     if "Log.txt" not in LogCheck:
-        print("Log file no exist!")
+        print("\nLog file Created!")
         file = open("./Log.txt", "w")
         file.write("<<DotDist Edit - Run Log>>")
         file.close
     else:
+        print("\nLog file Saved.")
         if Check=="work":
             with open('./Log.txt', "a") as file:
                 file.write("\n"+startTime)
@@ -110,6 +111,9 @@ for M in range(1, 4):
                     
             except FileExistsError:
                 pass
+            
+print("Input folder Created!\n")
+time.sleep(1)
 ################################################################################################
 try:os.mkdir('./DotDist_Output')
 except FileExistsError:pass
@@ -141,6 +145,9 @@ for M in range(1, 4):
                 os.mkdir(path)
 
             except FileExistsError:pass
+            
+print("Input folder Created!\n")
+time.sleep(1)
 ################################################################################################
 TotalValue = pd.DataFrame(columns = ['M_Number', 'Line', 'Cam_Number', 'Axis', 'Max-Min', 'Average', 'Variance', 'Standard_Deviation']) 
 INDEX=0
@@ -148,11 +155,13 @@ INDEX=0
 try:
     for M in range(1, 4):
         if M==1:
-            print("M1")
+            print("\n<<< M1 >>>")
             for folder in M1Line:
+                print("<< {} >>".format(folder))
                 path='./DotDist_Output/M1/'+folder
 
                 for camNum in range(1,4):
+                    print("< cam{} >.".format(camNum))
                     oldVerPath = './DotDist_Output/M1/'+folder+"/Cam"+str(camNum)
                     path = './DotDist_Output/M1/'+folder
                     camCnt = len(os.listdir(path))
@@ -180,8 +189,9 @@ try:
 
     ##################################################
         elif M==2:
-            print("M2")
+            print("\n<<< M2 >>>")
             for folder in M2Line:
+                print("<< {} >>".format(folder))
                 path='./DotDist_Output/M2/'+folder
 
                 if folder=="PA1" or folder=="PA2":
@@ -192,6 +202,7 @@ try:
                     camNum=5
 
                 for cam in range(1, camNum+1):
+                    print("< cam{} >.".format(cam))
                     oldVerPath = './DotDist_Output/M2/'+folder+"/Cam"+str(cam)
                     path = './DotDist_Output/M2/'+folder
                     camCnt = len(os.listdir(path))
@@ -218,11 +229,13 @@ try:
             INDEX+=1
     ##################################################      
         elif M==3:
-            print("M3")
+            print("\n<<< M3 >>>")
             for folder in M3Line:
+                print("<< {} >>".format(folder))
                 path='./DotDist_Output/M3/'+folder
 
                 for camNum in range(1,4):
+                    print("< cam{} >.".format(camNum))
                     oldVerPath = './DotDist_Output/M3/'+folder+"/Cam"+str(camNum)
                     path = './DotDist_Output/M3/'+folder
                     camCnt = len(os.listdir(path))
@@ -253,4 +266,6 @@ except Exception as e:
 ################################################################################################ 
 TotalValue.to_csv("./Total_Inspection_Value.csv", index=False)
 ################################################################################################ 
-#sys.exit()
+print("\n\n\nJob Done.")
+time.sleep(5)
+
