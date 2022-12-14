@@ -134,13 +134,14 @@ elif YN.upper() == "N":
     try:
         with open("SetInfo.pkl", 'rb') as f:
             LoadInfo = pickle.load(f)
-        print("저장된 셋업 정보\n>> ", Info)
+        print("저장된 셋업 정보\n>> ", LoadInfo)
     except FileNotFoundError:
         print("Error!  불러올 셋업 파일이 없습니다!")
         print("\n셋업 정보가 새로 생성됩니다. 허용하시면 Y 를 입력해주세요.")
         YN = input("진행 여부 (Y/N)\n>> ")
         LoadInfo = INFO(YN)
 ################################################################################################
+print()
 print(LoadInfo)
 
 """
@@ -205,7 +206,7 @@ for M in range(1, 4):
             except FileExistsError:
                 pass
             
-print("Input folder Created!\n")
+print("\nInput folder Created!\n")
 time.sleep(1)
 ################################################################################################
 try:os.mkdir('./DotDist_Output')
@@ -239,7 +240,7 @@ for M in range(1, 4):
 
             except FileExistsError:pass
             
-print("Input folder Created!\n")
+print("Output folder Created!\n")
 time.sleep(1)
 ################################################################################################
 TotalValue = pd.DataFrame(columns = ['M_Number', 'Line', 'Cam_Number', 'Axis', 'Max-Min', 'Average', 'Variance', 'Standard_Deviation']) 
