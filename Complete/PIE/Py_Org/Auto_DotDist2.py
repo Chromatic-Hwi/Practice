@@ -8,7 +8,7 @@ import pickle
 import time
 import scipy.stats as stats
 import sys
-################################################################################################
+##############################################################################################################################################
 def HeatMap(Data, Name, Path):
     plt.figure(figsize=(60, 40))
     ax = plt.gca()
@@ -18,7 +18,7 @@ def HeatMap(Data, Name, Path):
     plt.title(Name, pad=50, fontsize=50)
     plt.savefig(Path+"/"+Name+'.png')
     plt.close()
-################################################################################################
+##############################################################################################################################################
 def LogSave(Check, ErrorMsg):
     now = time
     startTime = now.strftime('%Y-%m-%d %H:%M:%S')
@@ -28,7 +28,7 @@ def LogSave(Check, ErrorMsg):
     if "Log.txt" not in LogCheck:
         print("\nLog file Created!")
         file = open("./Log.txt", "w")
-        file.write("<<DotDist Edit - Run Log>>")
+        file.write("<<Auto DotDist - Run Log>>")
         file.close
     else:
         print("\nLog file Saved.")
@@ -39,7 +39,7 @@ def LogSave(Check, ErrorMsg):
             with open('./Log.txt', "a") as file:
                 file.write("\n"+startTime+"\t")
                 file.write(ErrorMsg)
-################################################################################################    
+##############################################################################################################################################
 def ValueHandle(InputData):
     data=InputData
     DfList=[]
@@ -56,7 +56,7 @@ def ValueHandle(InputData):
     data_var = round(np.var(DfList_NoNan), 3)#
     data_std = round(np.std(DfList_NoNan), 3)#
     return(data_max, data_mid, data_min, data_gap, data_avg, data_var, data_std)
-################################################################################################
+##############################################################################################################################################
 def INFO(YN):
     if YN.upper() == "Y":
         M_List = list(input("\nM으로 구분된 설비를 입력해주세요. (ex.M1_1 M1_2 M2 M3 대소문자 구분X) \n>> ").split())
@@ -106,9 +106,7 @@ def INFO(YN):
 
         #print(TotalLineNCam)
 
-        M = len(M_List)
-
-        Result = [M, TotalLineList, TotalLineNCam]
+        Result = [M_List, TotalLineList, TotalLineNCam]
 
         with open("SetInfo.pkl", 'wb') as f:
             pickle.dump(Result, f)
@@ -118,7 +116,7 @@ def INFO(YN):
     else:
         print("Exit.")
         sys.exit()
-################################################################################################
+##############################################################################################################################################
 YN = input("셋업 정보 저장 과정 실행 여부를 입력해주세요. (Y/N)\n>> ")
 print()
 
@@ -140,226 +138,109 @@ elif YN.upper() == "N":
         print("\n셋업 정보가 새로 생성됩니다. 허용하시면 Y 를 입력해주세요.")
         YN = input("진행 여부 (Y/N)\n>> ")
         LoadInfo = INFO(YN)
-################################################################################################
-print()
-print(LoadInfo)
-
-"""
-여기서
-# 이후 코드 실행에 필요한 인자들은 M, M들의 line별 리스트=TotalLineList의 소리스트,  각 line의 cam 수=TotalLineNCam의 소딕셔너리
-"""
-
-################################################################################################
-M1Line = ["AA", "SV", "CA"]
-M2Line = ["PA1", "PA2", "AA", "SV", "CA"]
-M3Line = ["AA", "SV", "CA"]
-################################################################################################
+##############################################################################################################################################
+M_List = LoadInfo[0]
+TotalLineList = LoadInfo[1]
+TotalLineNCam = LoadInfo[2]
+##############################################################################################################################################
 try:os.mkdir('./DotDist_Input')
 except FileExistsError:pass
 
-for M in range(1, 4):
+for M in range(len(M_List)):
     try:
-        os.mkdir('./DotDist_Input/M'+str(M))
+        os.mkdir('./DotDist_Input/'+str(M_List[M]))
     except FileExistsError:
         pass
-    
-    if M==1:
-        for folder in M1Line:
-            try:
-                path='./DotDist_Input/M1/'+folder
-                os.mkdir(path)
-                
-                for c in range(1,4):
-                    os.mkdir(path+'/Cam'+str(c))
-                    
-            except FileExistsError:
-                pass
-            
-    elif M==2:
-        for folder in M2Line:
-            try:
-                path='./DotDist_Input/M2/'+folder
-                os.mkdir(path)
-                
-                if folder=="PA1" or folder=="PA2":
-                    for c in range(1,3):
-                        os.mkdir(path+'/Cam'+str(c))
-                elif folder=="AA" or folder=="SV":
-                    for c in range(1,4):
-                        os.mkdir(path+'/Cam'+str(c))
-                elif folder=="CA":
-                    for c in range(1,6):
-                        os.mkdir(path+'/Cam'+str(c))
-                    
-            except FileExistsError:
-                pass
-            
-    elif M==3:
-        for folder in M3Line:
-            try:
-                path='./DotDist_Input/M3/'+folder
-                os.mkdir(path)
 
-                for c in range(1,4):
-                    os.mkdir(path+'/Cam'+str(c))
-                    
-            except FileExistsError:
-                pass
+    for L in range(len(TotalLineList[M])):
+        try:
+            Line = TotalLineList[M][L]
+            path='./DotDist_Input/'+str(M_List[M])+'/'+Line
+            os.mkdir(path)
+
+            CamNum = int(TotalLineNCam[M][Line])
+            try:
+                for c in range(1, CamNum+1):
+                    path='./DotDist_Input/'+str(M_List[M])+'/'+Line+'/Cam'+str(c)
+                    os.mkdir(path)
+            except:pass
+                
+        except:
+            Line = TotalLineList[M][L]
+            CamNum = int(TotalLineNCam[M][Line])
+            try:
+                for c in range(1, CamNum+1):
+                    path='./DotDist_Input/'+str(M_List[M])+'/'+Line+'/Cam'+str(c)
+                    os.mkdir(path)
+            except:pass
             
 print("\nInput folder Created!\n")
 time.sleep(1)
-################################################################################################
+##############################################################################################################################################
 try:os.mkdir('./DotDist_Output')
 except FileExistsError:pass
 
-for M in range(1, 4):
-    try:os.mkdir('./DotDist_Output/M'+str(M))
-    except FileExistsError:pass
+for M in range(len(M_List)):
+    try:
+        os.mkdir('./DotDist_Output/'+str(M_List[M]))
+    except FileExistsError:
+        pass
 
-    if M==1:
-        for folder in M1Line:
-            try:
-                path='./DotDist_Output/M1/'+folder
-                os.mkdir(path)
-
-            except FileExistsError:pass
-###############################################
-    elif M==2:
-        for folder in M2Line:
-            try:
-                path='./DotDist_Output/M2/'+folder
-                os.mkdir(path)
-
-            except FileExistsError:pass
-###############################################
-    elif M==3:
-        for folder in M3Line:
-            try:
-                path='./DotDist_Output/M3/'+folder
-                os.mkdir(path)
-
-            except FileExistsError:pass
+    for L in range(len(TotalLineList[M])):
+        try:
+            Line = TotalLineList[M][L]
+            path='./DotDist_Output/'+str(M_List[M])+'/'+Line
+            os.mkdir(path)
+                
+        except:pass
             
-print("Output folder Created!\n")
+print("\nOutput folder Created!\n")
 time.sleep(1)
-################################################################################################
+##############################################################################################################################################
 TotalValue = pd.DataFrame(columns = ['M_Number', 'Line', 'Cam_Number', 'Axis', 'Max-Min', 'Average', 'Variance', 'Standard_Deviation']) 
 INDEX=0
-################################################################################################
+##############################################################################################################################################
 try:
-    for M in range(1, 4):
-        if M==1:
-            print("\n<<< M1 >>>")
-            for folder in M1Line:
-                print("<< {} >>".format(folder))
-                path='./DotDist_Output/M1/'+folder
+    for M in range(len(M_List)):
+        print("\n<<< {} >>>".format(M_List[M]))
 
-                for camNum in range(1,4):
-                    print("< cam{} >.".format(camNum))
-                    oldVerPath = './DotDist_Output/M1/'+folder+"/Cam"+str(camNum)
-                    path = './DotDist_Output/M1/'+folder
-                    camCnt = len(os.listdir(path))
+        for L in range(len(TotalLineList[M])):
+            Line = TotalLineList[M][L]
+            print("<< {} >>".format(Line))
 
-                    pathFront=oldVerPath[:10]
-                    pathBack=oldVerPath[16:]
-                    path_IN=pathFront+"Input"+pathBack
+            path='./DotDist_Input/'+str(M_List[M])+'/'+Line
 
-                    for axis in ["X", "Y"]:
-                        try:
-                            file = path_IN+"/-1Cam_Dist"+axis+".csv"
-                            InputData = pd.read_csv(file)
-                            InfoList = ["M"+str(M), folder, camNum, axis]
-                            ValueList = list(ValueHandle(InputData))[3:]
-                            TotalValue.loc[INDEX] = InfoList+ValueList
-                            Name = "Cam"+str(camNum)+"_"+axis
-                            HeatMap(InputData, Name, path)
-                        except:
-                            pass
-                        INDEX+=1
-                TotalValue.loc[INDEX] = [None, None, None, None, None, None, None, None]
-                INDEX+=1
+            CamNum = int(TotalLineNCam[M][Line])
+            for c in range(1, CamNum+1):
+                pathSave = './DotDist_Output/'+str(M_List[M])+'/'+Line
+                path='./DotDist_Input/'+str(M_List[M])+'/'+Line+'/Cam'+str(c)
+
+                for axis in ["X", "Y"]:
+                    try:
+                        file = path+"/-1Cam_Dist"+axis+".csv"
+                        InputData = pd.read_csv(file)
+                        InfoList = [M_List[M], Line, c, axis]
+                        ValueList = list(ValueHandle(InputData))[3:]
+                        TotalValue.loc[INDEX] = InfoList+ValueList
+                        Name = "Cam"+str(c)+"_"+axis
+                        HeatMap(InputData, Name, pathSave)
+                    except:
+                        pass
+                    INDEX+=1
             TotalValue.loc[INDEX] = [None, None, None, None, None, None, None, None]
             INDEX+=1
-
-    ##################################################
-        elif M==2:
-            print("\n<<< M2 >>>")
-            for folder in M2Line:
-                print("<< {} >>".format(folder))
-                path='./DotDist_Output/M2/'+folder
-
-                if folder=="PA1" or folder=="PA2":
-                    camNum=2
-                elif folder=="AA" or folder=="SV":
-                    camNum=3
-                elif folder=="CA":
-                    camNum=5
-
-                for cam in range(1, camNum+1):
-                    print("< cam{} >.".format(cam))
-                    oldVerPath = './DotDist_Output/M2/'+folder+"/Cam"+str(cam)
-                    path = './DotDist_Output/M2/'+folder
-                    camCnt = len(os.listdir(path))
-
-                    pathFront=oldVerPath[:10]
-                    pathBack=oldVerPath[16:]
-                    path_IN=pathFront+"Input"+pathBack
-
-                    for axis in ["X", "Y"]:
-                        try:
-                            file = path_IN+"/-1Cam_Dist"+axis+".csv"
-                            InputData = pd.read_csv(file)
-                            InfoList = ["M"+str(M), folder, cam, axis]
-                            ValueList = list(ValueHandle(InputData))[3:]
-                            TotalValue.loc[INDEX] = InfoList+ValueList
-                            Name = "Cam"+str(cam)+"_"+axis
-                            HeatMap(InputData, Name, path)
-                        except:
-                            pass
-                        INDEX+=1
-                TotalValue.loc[INDEX] = [None, None, None, None, None, None, None, None]
-                INDEX+=1
-            TotalValue.loc[INDEX] = [None, None, None, None, None, None, None, None]
-            INDEX+=1
-    ##################################################      
-        elif M==3:
-            print("\n<<< M3 >>>")
-            for folder in M3Line:
-                print("<< {} >>".format(folder))
-                path='./DotDist_Output/M3/'+folder
-
-                for camNum in range(1,4):
-                    print("< cam{} >.".format(camNum))
-                    oldVerPath = './DotDist_Output/M3/'+folder+"/Cam"+str(camNum)
-                    path = './DotDist_Output/M3/'+folder
-                    camCnt = len(os.listdir(path))
-
-                    pathFront=oldVerPath[:10]
-                    pathBack=oldVerPath[16:]
-                    path_IN=pathFront+"Input"+pathBack
-
-                    for axis in ["X", "Y"]:
-                        try:
-                            file = path_IN+"/-1Cam_Dist"+axis+".csv"
-                            InputData = pd.read_csv(file)
-                            InfoList = ["M"+str(M), folder, camNum, axis]
-                            ValueList = list(ValueHandle(InputData))[3:]
-                            TotalValue.loc[INDEX] = InfoList+ValueList
-                            Name = "Cam"+str(camNum)+"_"+axis
-                            HeatMap(InputData, Name, path)
-                        except:
-                            pass
-                        INDEX+=1
-
-                TotalValue.loc[INDEX] = [None, None, None, None, None, None, None, None]
-                INDEX+=1
+        TotalValue.loc[INDEX] = [None, None, None, None, None, None, None, None]
+        INDEX+=1
+            
     LogSave("work", None)
+        
 except Exception as e:
     LogSave("fail", str(e)[10:])
     pass
-################################################################################################ 
+##############################################################################################################################################
 TotalValue.to_csv("./Total_Inspection_Value.csv", index=False)
-################################################################################################ 
+##############################################################################################################################################
 print("\n\n\nJob Done.")
 time.sleep(5)
+sys.exit()
 
