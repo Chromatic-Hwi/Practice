@@ -9,6 +9,8 @@ import time
 import scipy.stats as stats
 import sys
 ##############################################################################################################################################
+AlphabetList = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+##############################################################################################################################################
 def HeatMap(Data, Name, Path):
     plt.figure(figsize=(60, 40))
     ax = plt.gca()
@@ -41,10 +43,15 @@ def LogSave(Check, ErrorMsg):
                 file.write(ErrorMsg)
 ##############################################################################################################################################
 def ValueHandle(InputData):
-    data=InputData
+    data = InputData
+    
+    columnsLen = len(data.columns)
+    NewColumns = AlphabetList[:columnsLen]
+    data.columns = NewColumns
+    
     DfList=[]
-    for n in range(len(data.columns)):
-        columnsList = list(np.array(data[str(n)].tolist()))
+    for col in data.columns:
+        columnsList = list(data[col].values.tolist()))
         DfList.extend(columnsList)
     DfList_NoNan = [x for x in DfList if np.isnan(x) == False]
     
