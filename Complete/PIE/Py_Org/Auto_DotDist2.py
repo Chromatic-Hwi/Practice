@@ -137,8 +137,9 @@ elif YN.upper() == "N":
         print("저장된 셋업 정보\n>> ", Info)
     except FileNotFoundError:
         print("Error!  불러올 셋업 파일이 없습니다!")
-        print("Exit.")
-        sys.exit()
+        print("\n셋업 정보가 새로 생성됩니다. 허용하시면 Y 를 입력해주세요.")
+        YN = input("진행 여부 (Y/N)\n>> ")
+        LoadInfo = INFO(YN)
 ################################################################################################
 print(LoadInfo)
 
