@@ -66,7 +66,7 @@ def ValueHandle(InputData):
 ##############################################################################################################################################
 def INFO(YN):
     if YN.upper() == "Y":
-        M_List = list(input("\nM으로 구분된 설비를 입력해주세요. (ex.M1_1 M1_2 M2 M3 대소문자 구분X) \n>> ").split())
+        M_List = list(input("\nMode로 구분된 설비를 입력해주세요. (ex.M1_1 M1_2 M2 M3 대소문자 구분X) \n>> ").split())
         for _ in range(len(M_List)):
             M_List.append(M_List[0].upper())
             del M_List[0]
@@ -74,7 +74,7 @@ def INFO(YN):
         TotalLineList = []
         TotalLineCnt = []
         for L in range(len(M_List)):
-            print("\n{} 설비에서 Align으로 구분되는 라인을 공백으로 구분해 입력해주세요. (ex. AA CA SV 대소문자 구분X)".format(M_List[L]))
+            print("\n{} 설비에서 Align으로 구분되는 라인을 공백으로 구분해 입력해주세요. (ex. PA1 PA2 AA CA SV 대소문자 구분X)".format(M_List[L]))
             LineList = list(input(">> ").split())
 
             for _ in range(len(LineList)):
