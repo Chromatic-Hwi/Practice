@@ -155,38 +155,43 @@ M_List = LoadInfo[0]
 TotalLineList = LoadInfo[1]
 TotalLineNCam = LoadInfo[2]
 ##############################################################################################################################################
-try:os.mkdir('./DotDist_Input')
-except FileExistsError:pass
+YN = input("[입력 데이터 폴더 생성] 실행 여부를 입력해주세요. (Y/N)\n>> ")
 
-for M in range(len(M_List)):
-    try:
-        os.mkdir('./DotDist_Input/'+str(M_List[M]))
-    except FileExistsError:
-        pass
+if YN.upper() == "Y":
+    try:os.mkdir('./DotDist_Input')
+    except FileExistsError:pass
 
-    for L in range(len(TotalLineList[M])):
+    for M in range(len(M_List)):
         try:
-            Line = TotalLineList[M][L]
-            path='./DotDist_Input/'+str(M_List[M])+'/'+Line
-            os.mkdir(path)
+            os.mkdir('./DotDist_Input/'+str(M_List[M]))
+        except FileExistsError:
+            pass
 
-            CamNum = int(TotalLineNCam[M][Line])
+        for L in range(len(TotalLineList[M])):
             try:
-                for c in range(1, CamNum+1):
-                    path='./DotDist_Input/'+str(M_List[M])+'/'+Line+'/Cam'+str(c)
-                    os.mkdir(path)
-            except:pass
-                
-        except:
-            Line = TotalLineList[M][L]
-            CamNum = int(TotalLineNCam[M][Line])
-            try:
-                for c in range(1, CamNum+1):
-                    path='./DotDist_Input/'+str(M_List[M])+'/'+Line+'/Cam'+str(c)
-                    os.mkdir(path)
-            except:pass
-            
-print("\nInput folder Created!\n")
+                Line = TotalLineList[M][L]
+                path='./DotDist_Input/'+str(M_List[M])+'/'+Line
+                os.mkdir(path)
+
+                CamNum = int(TotalLineNCam[M][Line])
+                try:
+                    for c in range(1, CamNum+1):
+                        path='./DotDist_Input/'+str(M_List[M])+'/'+Line+'/Cam'+str(c)
+                        os.mkdir(path)
+                except:pass
+                    
+            except:
+                Line = TotalLineList[M][L]
+                CamNum = int(TotalLineNCam[M][Line])
+                try:
+                    for c in range(1, CamNum+1):
+                        path='./DotDist_Input/'+str(M_List[M])+'/'+Line+'/Cam'+str(c)
+                        os.mkdir(path)
+                except:pass
+    print("\nInput folder Created!\n")
+
+elif YN.upper() == "N":
+    print("\nInput folder Checked!\n")
 time.sleep(1)
 ##############################################################################################################################################
 try:os.mkdir('./DotDist_Output')
