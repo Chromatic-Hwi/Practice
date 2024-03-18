@@ -1,12 +1,27 @@
-int interruptChecker = A15;
+char interruptChecker = A0;
 int RunOrStop;
 
-char digitalInA1 = A0;
-char digitalInA2 = A1;
-char digitalInA3 = A2;
-char digitalInB1 = A8;
-char digitalInB2 = A9;
-char digitalInB3 = A10;
+char digitalInA1 = A1;
+char digitalInA2 = A2;
+char digitalInA3 = A3;
+char digitalInB1 = A5;
+char digitalInB2 = A6;
+char digitalInB3 = A7;
+
+int digitalOutA1 = 23;
+int digitalOutA2 = 25;
+int digitalOutA3 = 27;
+int digitalOutA4 = 29;
+int digitalOutA5 = 31;
+int digitalOutA6 = 33;
+
+int digitalOutB1 = 22;
+int digitalOutB2 = 24;
+int digitalOutB3 = 26;
+int digitalOutB4 = 28;
+int digitalOutB5 = 30;
+int digitalOutB6 = 32;
+
 
 int inputValueA1;
 int inputValueA2;
@@ -14,14 +29,6 @@ int inputValueA3;
 int inputValueB1;
 int inputValueB2;
 int inputValueB3;
-/*
-char HiLowA1 = "L";
-char HiLowA2 = "L";
-char HiLowA3 = "L";
-char HiLowB1 = "L";
-char HiLowB2 = "L";
-char HiLowB3 = "L";
-*/
 
 void setup(void)
 {
@@ -34,6 +41,21 @@ void setup(void)
     pinMode(digitalInB1, INPUT);
     pinMode(digitalInB2, INPUT);
     pinMode(digitalInB3, INPUT);
+    
+    pinMode(digitalOutA1, OUTPUT);
+    pinMode(digitalOutA2, OUTPUT);
+    pinMode(digitalOutA3, OUTPUT);
+    pinMode(digitalOutA4, OUTPUT);
+    pinMode(digitalOutA5, OUTPUT);
+    pinMode(digitalOutA6, OUTPUT);
+    
+    pinMode(digitalOutB1, OUTPUT);
+    pinMode(digitalOutB2, OUTPUT);
+    pinMode(digitalOutB3, OUTPUT);
+    pinMode(digitalOutB4, OUTPUT);
+    pinMode(digitalOutB5, OUTPUT);
+    pinMode(digitalOutB6, OUTPUT);
+    
 }
  
 void loop(void)
@@ -47,36 +69,20 @@ void loop(void)
   inputValueB2 = digitalRead(digitalInB2);
   inputValueB3 = digitalRead(digitalInB3);
   
-  /*
-  char SentenceValue[70];
-  sprintf(Sentence , "OutputA : {%2d, %2d, %2d}  |  OutPutB : {%2d, %2d, %2d}", 
-  inputValueA1, inputValueA2, inputValueA3,
-  inputValueB1, inputValueB2, inputValueB3);
-  */
-  /*
-  char SentenceBool[70];
-  if (inputValueA1>100){HiLowA1 = "H";}
-  else {HiLowA1 = "L";}
-  if (inputValueA2>100){HiLowA2 = "H";}
-  else {HiLowA2 = "L";}
-  if (inputValueA3>100){HiLowA3 = "H";}
-  else {HiLowA3 = "L";}
-
-  if (inputValueB1>100){HiLowB1 = "H";}
-  else {HiLowB1 = "L";}
-  if (inputValueB2>100){HiLowB2 = "H";}
-  else {HiLowB2 = "L";}
-  if (inputValueB3>100){HiLowB3 = "H";}
-  else {HiLowB3 = "L";}
-  
-  sprintf(SentenceBool , "OutputA : {%s, %s, %s}  |  OutPutB : {%s, %s, %s}", 
-  HiLowA1, HiLowA2, HiLowA3,
-  HiLowB1, HiLowB2, HiLowB3);
-  */
+  digitalWrite(digitalOutA1, HIGH);
+  digitalWrite(digitalOutA2, HIGH);
+  digitalWrite(digitalOutA3, HIGH);
+  digitalWrite(digitalOutA4, HIGH);
+  digitalWrite(digitalOutA5, HIGH);
+  digitalWrite(digitalOutA6, HIGH);
+  digitalWrite(digitalOutB1, LOW);
+  digitalWrite(digitalOutB2, LOW);
+  digitalWrite(digitalOutB3, LOW);
+  digitalWrite(digitalOutB4, LOW);
+  digitalWrite(digitalOutB5, LOW);
+  digitalWrite(digitalOutB6, LOW);
   
   if (RunOrStop != 0){
-    //Serial.println(SentenceValue);
-    //Serial.println(SentenceBool);
     Serial.print("OutputA : {");
     Serial.print(inputValueA1);
     Serial.print(", ");
@@ -95,8 +101,9 @@ void loop(void)
     
     delay(200);
     }
+    
   else{
-    Serial.println("[No print mode], Remove Gnd from A0 to restart print.");
+    Serial.println("[No print mode], Remove Gnd from A0 to print.");
     delay(5000);
     }
   //
