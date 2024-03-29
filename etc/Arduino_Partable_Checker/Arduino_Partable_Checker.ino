@@ -104,7 +104,7 @@ void loop(void)
     
   else{
     Serial.println("[No print mode], Remove Gnd from A0 to print.");
-    delay(5000);
+    delay(3000);
     }
   //
   
