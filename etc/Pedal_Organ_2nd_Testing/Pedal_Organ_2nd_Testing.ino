@@ -1,4 +1,5 @@
-//
+//#include <Tone.h>
+
 int output = 13;
 
 // 입력 지정     (C, C#, D, D#, E, F, F#, G, G#, A, A#, B 총 12개)
