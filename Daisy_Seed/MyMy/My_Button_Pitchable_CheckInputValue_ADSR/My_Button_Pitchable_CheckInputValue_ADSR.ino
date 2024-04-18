@@ -21,8 +21,6 @@ void MyCallback(float **in, float **out, size_t size)
     adenv.Trigger();
   }
   
-  
-  
   for (size_t i = 0; i < size; i++) {
 
     // Process the envelope
@@ -53,11 +51,11 @@ void setup() {
   // Set the value of Env
   // Atack, Decay, Sustain, Release => ADSR
   adenv.Init(sample_rate);
-  adenv.SetTime(ADENV_SEG_ATTACK, 0.1);
-  adenv.SetTime(ADENV_SEG_DECAY, 0.5);
+  adenv.SetTime(ADENV_SEG_ATTACK, 0.01);
+  adenv.SetTime(ADENV_SEG_DECAY, 0.1);
   adenv.SetMin(0);
-  adenv.SetMax(1);
-  adenv.SetCurve(0);
+  adenv.SetMax(15);
+  adenv.SetCurve(1);
   
   // Check value of pot
   Serial.begin(9600);

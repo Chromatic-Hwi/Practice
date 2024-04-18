@@ -43,9 +43,9 @@ void setup() {
   env.Init(sample_rate);
   env.SetTime(ADENV_SEG_ATTACK, 0.05f);
   env.SetTime(ADENV_SEG_DECAY, 0.35f);
-  env.SetMin(0.0);
+  env.SetMin(5.0);
   env.SetMax(15.f);
-  env.SetCurve(0); // linear
+  env.SetCurve(10); // linear
 
   // start callback
   DAISY.begin(AudioCallback);
