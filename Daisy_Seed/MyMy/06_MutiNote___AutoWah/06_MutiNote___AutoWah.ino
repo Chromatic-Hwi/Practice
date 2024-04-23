@@ -192,6 +192,6 @@ void loop() {
   volume_G = analog_knob / 65535.0 * buttonG.Pressed();
   volume_A = analog_knob / 65535.0 * buttonA.Pressed();
   volume_B = analog_knob / 65535.0 * buttonB.Pressed();
-  
+
   delay(1);
   }
