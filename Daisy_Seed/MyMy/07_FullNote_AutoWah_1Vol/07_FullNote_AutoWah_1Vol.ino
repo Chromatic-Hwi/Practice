@@ -1,4 +1,4 @@
-#include "DaisyDuino.h"
+ #include "DaisyDuino.h"
 
 DaisyHardware hw;
 size_t num_channels;
@@ -22,15 +22,21 @@ float osc_Sum;
 static Metro tick;
 static Autowah autowah;
 
+float env_on;
+
 float oct = 2; // 1=E2, 2=E3
+
+float analog_value0;
+float analog_value1;
+float analog_value2;
+float analog_value3;
+float analog_value4;
 
 float analog_knob0;
 float analog_knob1;
 float analog_knob2;
 float analog_knob3;
 float analog_knob4;
-
-float env_on;
 
 float volume_C;
 float volume_CC;
@@ -57,8 +63,6 @@ Switch buttonGG;
 Switch buttonA;
 Switch buttonAA;
 Switch buttonB;
-
-float button_pressed;
 
 float freqE2[12] = {65.41, 69.30, 73.42, 77.78, 82.41, 87.31, 92.50, 98.00, 103.8, 110.0, 116.5, 123.5};
 
@@ -99,10 +103,10 @@ void MyCallback(float **in, float **out, size_t size)
   
   for (size_t i = 0; i < size; i++) {
     // When the metro ticks, trigger the envelope to start.
-    if (tick.Process()) {
+    if (tick.Process()){
       adenv.Trigger();
-    }
-    
+      }
+      
     env_on = adenv.Process();
     
     osc_C.SetFreq(freqE2[0] * oct);
@@ -141,20 +145,7 @@ void MyCallback(float **in, float **out, size_t size)
     osc_B.SetFreq(freqE2[11] * oct);
     osc_B.SetAmp(volume_B*env_on);
 
-    out[0][i] = {
-      osc_C.Process() 
-      + osc_CC.Process() 
-      + osc_D.Process() 
-      + osc_DD.Process() 
-      + osc_E.Process() 
-      + osc_F.Process() 
-      + osc_FF.Process() 
-      + osc_G.Process() 
-      + osc_GG.Process() 
-      + osc_A.Process() 
-      + osc_AA.Process() 
-      + osc_B.Process();
-      }
+    out[0][i] = osc_C.Process() + osc_CC.Process() + osc_D.Process() + osc_DD.Process() + osc_E.Process() + osc_F.Process() + osc_FF.Process() + osc_G.Process() + osc_GG.Process() + osc_A.Process() + osc_AA.Process() + osc_B.Process();
     //out[1][i] = out_signal; 
   }
 }
@@ -235,17 +226,17 @@ void setup() {
   adenv.SetTime(ADENV_SEG_ATTACK, 0.02f);
   adenv.SetTime(ADENV_SEG_DECAY, 0.35f);
   adenv.SetMin(0.f); // 0으로 하면  env 싸이클 종료후 음 출력 안됨.
-  adenv.SetMax(5.f);
+  adenv.SetMax(1.f);
   adenv.SetCurve(1);  //
 
   // Set up metro to pulse every second
-  tick.Init(3.0f, sample_rate); // 1~10 사이를 컨트롤 하도록 pot
+  tick.Init(5.0f, sample_rate); // 1~10 사이를 컨트롤 하도록 pot
   
   // set autowah parameters
   autowah.Init(sample_rate);
   autowah.SetLevel(.1);
   autowah.SetDryWet(100);
-  autowah.SetWah(1);
+  autowah.SetWah(1); //20까지 올려봤는데 차이 체감 X
   
   // Check value of pot
   Serial.begin(9600);
@@ -272,26 +263,29 @@ void setup() {
 void loop() {
   analogReadResolution(16); //Not a GPIO Num
 
-  analog_knob0 = analogRead(A0);
-  analog_knob1 = analogRead(A1);
-  analog_knob2 = analogRead(A2);
-  analog_knob3 = analogRead(A3);
-  analog_knob4 = analogRead(A4);
+  analog_value0 = analogRead(A0);
+  analog_value1 = analogRead(A1);
+  analog_value2 = analogRead(A2);
+  analog_value3 = analogRead(A3);
+  analog_value4 = analogRead(A4);
   //Serial.println(analogRead(A0)); //300~65535
   
   // amp_button ==>> 눌렀을 때 1
-  volume_C = analog_knob0 / 65535.0 * buttonC.Pressed();
-  volume_CC = analog_knob0 / 65535.0 * buttonCC.Pressed();
-  volume_D = analog_knob0 / 65535.0 * buttonD.Pressed();
-  volume_DD = analog_knob0 / 65535.0 * buttonDD.Pressed();
-  volume_E = analog_knob0 / 65535.0 * buttonE.Pressed();
-  volume_F = analog_knob0 / 65535.0 * buttonF.Pressed();
-  volume_FF = analog_knob0 / 65535.0 * buttonFF.Pressed();
-  volume_G = analog_knob0 / 65535.0 * buttonG.Pressed();
-  volume_GG = analog_knob0 / 65535.0 * buttonGG.Pressed();
-  volume_A = analog_knob0 / 65535.0 * buttonA.Pressed();
-  volume_AA = analog_knob0 / 65535.0 * buttonAA.Pressed();
-  volume_B = analog_knob0 / 65535.0 * buttonB.Pressed();
+  volume_C = analog_value0 / 65535.0 * buttonC.Pressed();
+  volume_CC = analog_value0 / 65535.0 * buttonCC.Pressed();
+  volume_D = analog_value0 / 65535.0 * buttonD.Pressed();
+  volume_DD = analog_value0 / 65535.0 * buttonDD.Pressed();
+  volume_E = analog_value0 / 65535.0 * buttonE.Pressed();
+  volume_F = analog_value0 / 65535.0 * buttonF.Pressed();
+  volume_FF = analog_value0 / 65535.0 * buttonFF.Pressed();
+  volume_G = analog_value0 / 65535.0 * buttonG.Pressed();
+  volume_GG = analog_value0 / 65535.0 * buttonGG.Pressed();
+  volume_A = analog_value0 / 65535.0 * buttonA.Pressed();
+  volume_AA = analog_value0 / 65535.0 * buttonAA.Pressed();
+  volume_B = analog_value0 / 65535.0 * buttonB.Pressed();
 
-  delay(1);
+  Serial.print(analog_value0);
+  Serial.print("  |  ");
+  Serial.println(analog_value1);
+  delay(10);
   }
