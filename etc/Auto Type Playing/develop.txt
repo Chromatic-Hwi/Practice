@@ -1,0 +1,31 @@
+일단 
+115 bpm 에서 60000 / bpm => 1/4 ms 나옴
+
+1/1 = 2088ms
+whole note = 0
+
+1/2 = 1044ms
+half note = 2
+
+1/4 = 522ms 
+quarter note = 4
+dotted quarter note = 6
+
+1/8 = 261ms
+eighth note = 8
+eighth note = 12
+
+최대 2.5초
+
+오선지 기준 가온다는 C4
+반음은 표현을....
+C04, C#4, D4
+
+ 23      567
+QWE   RTYU
+
+ SD     GHJ
+ZXC   VBNM
+
+VBNV Q N BQB VX N VC
+VCXC VB ZV BNJ JNBVB

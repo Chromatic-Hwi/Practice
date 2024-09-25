@@ -1,0 +1,167 @@
+Always With Me 
+200
+
+XXX n4
+XXX n4
+F04 n8
+G04 n8
+
+A04 n8
+F04 n8
+C05 N4
+A04 n8
+
+G04 n4
+C05 n4
+G04 n4
+
+F04 n8
+D04 n8
+A04 N4
+F04 n8
+
+E04 n2
+E04 n4
+
+D04 n4
+E04 n4
+F04 n8
+G04 n8
+
+C04 n4
+F04 n4
+G04 n8
+A04 n8
+
+A#4 n4
+A#4 n8
+A04 n8
+G04 n8
+F04 n8
+
+G04 n4
+XXX n4
+F04 n8
+G04 n8
+
+A04 n8
+F04 n8
+C05 N4
+A04 n8
+
+G04 n4
+C05 n4
+G04 n4
+
+F04 n8
+D04 n8
+D04 n4
+E04 n8
+F04 n8
+
+C04 n2
+XXX n8
+C04 n8
+
+D04 n4
+E04 n4
+F04 n8
+G04 n8
+
+C04 n4
+F04 n4
+G04 n8
+A04 n8
+
+A#4 n4
+A#4 n8
+A04 n8
+G04 n8
+F04 n8
+
+F04 N2
+
+XXX n4
+XXX n4
+A04 n8
+A#4 n8
+
+C05 n4
+C05 n4
+C05 n4
+
+C05 n4
+C05 n8
+D05 n8
+C05 n8
+A#4 n8
+
+A04 n4
+A04 n4
+A04 n4
+
+A04 n4
+A04 n8
+A#4 n8
+A04 n8
+G04 n8
+
+F04 n4
+F04 n4
+F04 n8
+E04 n8
+
+D04 n4
+E04 n4
+E04 n8
+F04 n8
+
+G04 n4
+G04 n8
+A04 n8
+G04 n8
+A04 n8
+
+G04 n4
+XXX n4
+A04 n8
+A#4 n8
+
+C05 n4
+C05 n4
+C05 n4
+
+C05 n4
+C05 n8
+D05 n8
+C05 n8
+A#4 n8
+
+A04 n4
+A04 n4
+A04 n4
+
+A04 n8
+A#4 n8
+A04 n8
+G04 n8
+F04 n8
+E04 n8
+
+D04 n4
+D04 n8
+E04 n8
+F04 n8
+G04 n8
+
+C04 n4
+F04 n4
+G04 n8
+A04 n8
+
+G04 N4
+G04 n8
+G04 n8
+F04 n8
+
+F04 N2
