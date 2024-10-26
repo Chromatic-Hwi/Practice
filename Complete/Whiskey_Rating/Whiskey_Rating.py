@@ -19,7 +19,7 @@ class ScoreApp:
             "Q6. 잔향이 부담스럽게 올라온다(-) / 기분좋게 잔향이 남는다(+)",
             "Q7. Nose와 비교해 차이 혹은 Finish 만의 포인트가 있다.",
             "Q8. Nose -> Palete -> Finish 까지의 어울림과 연계가 조화롭다. ",
-            "Q9. 향과 맛의 무게와 존재감이 액체의 무게감과 어울린다."
+            "Q9. 풍미의 무게와 존재감이 액체의 느낌과 어울린다."
         ]
         
         self.scores = [0] * 9  # Initialize scores for each question to 0
