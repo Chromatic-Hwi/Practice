@@ -87,10 +87,10 @@ class ScoreApp:
             "Agave": "아가베", "Anise": "아니스(팔각)", "Apple": "사과", "Apricot": "살구",
             "Artificial": "인조적인", "Banana": "바나나", "Berries": "베리류", "Bitter": "쓴",
             "Briny": "바다의 짠맛", "Butter": "버터", "Caramel": "캬라멜", "Chemical": "화학약품",
-            "Cinnamon": "계피", "Citrus": "감귤류", "Chocolate":"초코(카카오)", "Clove": "클로브(정향)", "Coconut": "코코넛",
+            "Cinnamon": "계피", "Citrus": "감귤류", "Chocolate":"초콜릿(카카오)", "Clove": "클로브(정향)", "Coconut": "코코넛",
             "Coffee": "커피", "Coriander": "고수", "Cream": "크림", "Cucumber": "오이",
             "Dried Fruit": "말린 과일", "Earthy": "흙내", "Fennel": "펜넬(회향)", "Fig": "무화과",
-            "Floral": "꽃향기", "Fruity": "과일향", "Full": "꽉 차는", "Grain": "곡류의 씨앗",
+            "Floral": "꽃향기", "Fruity": "과일향", "Grain": "곡류의 씨앗",
             "Grape": "포도", "Grapefruit": "자몽", "Harsh": "거친", "Herbal": "허브류",
             "Honey": "꿀", "Hot": "화끈한", "Juniper": "주니퍼베리", "Leather": "가죽",
             "Licorice": "서양 감초", "Light": "가벼움", "Lime": "라임", "Maple": "메이플(시럽)",
@@ -99,7 +99,7 @@ class ScoreApp:
             "Oily": "기름진", "Orange": "오렌지", "Peaty": "피트향", "Pepper": "후추",
             "Pineapple": "파인애플", "Piney": "소나무", "Plum": "자두", "Potato": "감자",
             "Prune": "말린 서양자두", "Raisin": "건포도", "Rich": "풍부한", "Roast": "훈제",
-            "Salty": "짭잘함", "Savory": "적당한 간", "Sherry": "쉐리향", "Smooth": "부드러움",
+            "Salty": "짭잘함", "Savory": "적당한 간", "Sherry": "쉐리향", "Smooth": "부드러움", "Spicy":"매콤한",
             "Sweet": "달콤함", "Tannic": "타닌(쓴)", "Toasty": "구운 곡물", "Toffee": "토피넛",
             "Tropical": "열대(과일)", "Umami": "감칠맛", "Vanilla": "바닐라", "Woody": "나무"
         }
