@@ -1,0 +1,15 @@
+Name : Ardbeg Uigeadail
+
+Q1. 부담스럽거나 다른 향을 해치는 알콜향이 있다. -1
+Q2. 인위적인 향(-) / 자연스러운 향(+) 4
+Q3. 복합적인 여러 향들의 존재감이 조화롭고 정도가 적당하다. 5
+Q4. 입 안에서 맛이 향과 어울리게 잘 느껴진다. 4
+Q5. 단순하고 적은 향(-) / 복합적인 여러 향(+) 5
+Q6. 잔향이 부담스럽게 올라온다(-) / 기분좋게 잔향이 남는다(+) 4
+Q7. Nose와 비교해 차이 혹은 Finish 만의 포인트가 있다. 4
+Q8. Nose -> Palete -> Finish 까지의 어울림과 연계가 조화롭다. 5
+Q9. 풍미의 무게와 존재감이 액체의 느낌과 어울린다. 4
+
+Tasting Note : Briny, Chocolate, Coffee, Herbal, Medicinal, Molasses, Nutty, Peaty, Raisin, Roast, Salty, Savory, Sherry, Spicy, Sweet
+
+Total Score : 4.25
